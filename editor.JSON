@@ -1,0 +1,203 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "schedule a meeting",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "HelloWorldIntent",
+                    "slots": [],
+                    "samples": [
+                        "hello",
+                        "how are you",
+                        "say hi world",
+                        "say hi",
+                        "hi",
+                        "say hello world",
+                        "say hello"
+                    ]
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "dateCheck",
+                    "slots": [
+                        {
+                            "name": "platform",
+                            "type": "AMAZON.SearchQuery",
+                            "samples": [
+                                "{platform}"
+                            ]
+                        },
+                        {
+                            "name": "date",
+                            "type": "AMAZON.DATE",
+                            "samples": [
+                                "{date}"
+                            ]
+                        },
+                        {
+                            "name": "time",
+                            "type": "AMAZON.TIME",
+                            "samples": [
+                                "{time}"
+                            ]
+                        },
+                        {
+                            "name": "title",
+                            "type": "AMAZON.SearchQuery",
+                            "samples": [
+                                "{title}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "I want to schedule a meeting"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "platformOptions",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "Teams"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Zoom"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "test",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "xyz"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "dateCheck",
+                    "delegationStrategy": "ALWAYS",
+                    "confirmationRequired": true,
+                    "prompts": {
+                        "confirmation": "Confirm.Intent.1073372762897"
+                    },
+                    "slots": [
+                        {
+                            "name": "platform",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1073372762897.1574195751328"
+                            }
+                        },
+                        {
+                            "name": "date",
+                            "type": "AMAZON.DATE",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1073372762897.341902163751"
+                            }
+                        },
+                        {
+                            "name": "time",
+                            "type": "AMAZON.TIME",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1073372762897.1257446467428"
+                            }
+                        },
+                        {
+                            "name": "title",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1073372762897.919536338464"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "ALWAYS"
+        },
+        "prompts": [
+            {
+                "id": "Elicit.Slot.1073372762897.1257446467428",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "What time do you want to schedule the meeting for"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1073372762897.341902163751",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "what date do you want to schedule the meeting for?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1073372762897.919536338464",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "what is the title for the meeting"
+                    }
+                ]
+            },
+            {
+                "id": "Confirm.Intent.1073372762897",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "The {platform} meeting titled {title} is scheduled for {date} at {time} , correct?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1073372762897.1574195751328",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Please provide a platform"
+                    }
+                ]
+            }
+        ]
+    }
+}
