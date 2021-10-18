@@ -29,7 +29,7 @@ def generateToken():
 # create json data for post requests
 meetingdetails = {"topic": "The title of your zoom meeting",
                   "type": 2,
-                  "start_time": "2019-06-14T10: 21: 57",
+                  "start_time": "2021-10-03T10: 18: 00",
                   "duration": "45",
                   "timezone": "Europe/Madrid",
                   "agenda": "test",
@@ -62,11 +62,16 @@ def createMeeting():
     y = json.loads(r.text)
     join_URL = y["join_url"]
     meetingPassword = y["password"]
+
+    # create json data for post requests
+    urlAndPassword = dict()
+    urlAndPassword["url"] = y["join_url"]
+    urlAndPassword["password"] = y["password"]
   
     print(
         f'\n here is your zoom meeting link {join_URL} and your \
         password: "{meetingPassword}"\n')
-  
-  
+
 # run the create meeting function
 createMeeting()
+
